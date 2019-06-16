@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   resources :group_messages
-  get '/home', to: 'group_messages#index', as: 'inbox'
 
   resources :messages
+
   resources :groups
+  get '/home', to: 'groups#index', as: 'inbox'
+  
   resources :contacts
 
 

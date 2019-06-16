@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout "login"
 
   def index
     @user = User.new
@@ -13,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.find_or_create_by(user_params)
 
     if @user
+      session[:id] = @user.id
       redirect_to '/home'
     else
       redirect_to :index
