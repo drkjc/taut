@@ -15,7 +15,7 @@
     <span>Contacts:</span><br>
     <span>
       <% @user.contacts.each do |contact| %>
-        <%= contact.username %><br>
+        <%= link_to contact.username, contact_path(contact) %><br>
       <% end %>
     </span>
   </div>

@@ -1,8 +1,8 @@
 <div id="wrapper">
 
   <div id="top-nav">
-    <span>Group Message Home</span>
-    <span>Hi, <%= @user.username %></span>
+    <span>Contact Show</span>
+    <span><%= @contact.username %></span>
   </div>
 
   <div id="scrollbox">
@@ -21,7 +21,9 @@
   </div>
 
   <div id="show_box">
-    Click on a group.
+    <% @conversation.each do |c| %>
+      <%= c.content %>
+    <% end %>
   </div>
 
   <div class="bottom-nav" id="bottom-left">
