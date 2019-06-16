@@ -6,16 +6,23 @@
   </div>
 
   <div id="scrollbox">
+
     <span>Groups:</span><br>
     <span>
       <% @user.groups.each do |group| %>
         <%=link_to group.name, group_path(group) %><br>
       <% end %>
     </span><br>
+
     <span>Contacts:</span><br>
+
+    <%= render 'contact', user: @user %>
+
     <span>
       <% @user.contacts.each do |contact| %>
-        <%= link_to contact.username, contact_path(contact) %><br>
+        <% if !contact.id.nil? %>
+          <%= link_to contact.username, contact_path(contact) %><br>
+        <% end %>
       <% end %>
     </span>
   </div>

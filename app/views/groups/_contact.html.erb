@@ -1,0 +1,6 @@
+<%= form_for user.contacts.build do |f| %>
+  <%= f.label :username %><br>
+  <%= f.text_field :username %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.submit 'New Contact' %><br>
+<% end %><br>

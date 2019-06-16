@@ -1,5 +1,15 @@
 class ContactsController < ApplicationController
-  before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show, :create]
+
+  def new
+    @contact = Contact.new
+  end
+
+  def create
+    @user.contacts << Contact.create(contact_params)
+    binding.pry
+    redirect_to groups_path
+  end
 
   def show
     @contact = Contact.find(params[:id])
@@ -18,6 +28,10 @@ class ContactsController < ApplicationController
 
   def find_user
     @user = User.find(session[:id])
+  end
+
+  def contact_params
+    params.require(:contact).permit(:username)
   end
 
 end
