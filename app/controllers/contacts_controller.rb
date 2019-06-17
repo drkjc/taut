@@ -7,7 +7,6 @@ class ContactsController < ApplicationController
 
   def create
     @user.contacts << Contact.create(contact_params)
-    binding.pry
     redirect_to groups_path
   end
 

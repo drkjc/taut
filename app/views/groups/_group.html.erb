@@ -1,0 +1,6 @@
+<%= form_for user.groups.build do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+  <%= f.hidden_field :user_id, value: user.id %>
+  <%= f.submit 'New Group' %><br>
+<% end %><br>
