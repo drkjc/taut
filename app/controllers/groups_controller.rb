@@ -1,13 +1,8 @@
 class GroupsController < ApplicationController
-  before_action :find_user, only: [:index, :show, :edit, :create]
-
-  def index
-    @user = User.find(session[:id])
-  end
+  before_action :find_user, only: [:show, :edit, :create]
 
   def show
     @group = Group.find(params[:id])
-    #render template: "groups/index"
   end
 
   def new
@@ -16,8 +11,7 @@ class GroupsController < ApplicationController
 
   def create
     @user.groups << Group.create(group_params)
-    binding.pry
-    redirect_to groups_path
+    redirect_to user_path
   end
 
   def edit

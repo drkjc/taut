@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
-  layout "login"
 
   def index
     @user = User.new
+    render template: "login"
   end
 
   def new
     @user = User.new
+    render template: "login"
   end
 
   def create
@@ -19,6 +20,10 @@ class UsersController < ApplicationController
     else
       redirect_to :index
     end
+  end
+
+  def show
+    @user = User.find(session[:id])
   end
 
   private

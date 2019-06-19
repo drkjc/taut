@@ -1,0 +1,5 @@
+<% @user.contacts.each do |contact| %>
+  <% if !contact.id.nil? %>
+    <%= link_to contact.username, contact_path(contact) %><br>
+  <% end %>
+<% end %>

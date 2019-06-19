@@ -1,0 +1,5 @@
+<% @user.groups.each do |group| %>
+  <% if !group.id.nil? %>
+    <%= link_to group.name, group_path(group) %><br>
+  <% end %>
+<% end %>

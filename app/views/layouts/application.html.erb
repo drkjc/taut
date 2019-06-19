@@ -11,57 +11,44 @@
 
   <body>
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-      <div id="top-nav">
-        <span>Group Message Home</span>
-        <span>Hi, <%= @user.username %></span>
-      </div>
+          <div id="top-nav">
+            <span>Hi, <%= @user.username %></span>
+          </div>
 
-      <div id="scrollbox">
+          <div id="scrollbox">
 
-        <span>Groups:</span><br>
+            <span>Groups:</span><br>
 
-        <%= render 'groups/group', user: @user %>
+            <%= render 'groups/group', user: @user %>
 
-        <span>
-          <% @user.groups.each do |group| %>
-            <% if !group.id.nil? %>
-              <%=link_to group.name, group_path(group) %><br>
-            <% end %>
-          <% end %>
-        </span><br>
+            <span>
+              <%= render 'users/groups', user: @user  %>
+            </span><br>
 
-        <span>Contacts:</span><br>
+            <span>Contacts:</span><br>
 
-        <%= render 'groups/contact', user: @user %>
+            <%= render 'contacts/contact', user: @user %>
 
-        <span>
-          <% @user.contacts.each do |contact| %>
-            <% if !contact.id.nil? %>
-              <%= link_to contact.username, contact_path(contact) %><br>
-            <% end %>
-          <% end %>
-        </span>
-      </div>
+            <span>
+              <%= render 'users/contacts', user: @user %>
+            </span>
+          </div>
 
-      <div id="show_box">
-        <% if @group %>
-          <%= render "groups/show", group: @group %>
-        <% else %>
-          <%= render "contacts/show", conversation: @conversation %>
-        <% end %>
-      </div>
+          <div id="show_box">
+            <%= yield %>
+          </div>
 
-      <div class="bottom-nav" id="bottom-left">
-        Bottom left
-      </div>
+          <div class="bottom-nav" id="bottom-left">
+            Bottom left
+          </div>
 
-      <div class="bottom-nav" id="bottom-right">
-        Bottom right
-      </div>
+          <div class="bottom-nav" id="bottom-right">
+            Bottom right
+          </div>
 
-    </div>
+        </div>
 
   </body>
 </html>
