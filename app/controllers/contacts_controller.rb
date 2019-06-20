@@ -6,8 +6,14 @@ class ContactsController < ApplicationController
   end
 
   def create
-    @user.contacts << Contact.create(contact_params)
-    redirect_to groups_path
+    contact = Contact.find_or_create_by(contact_params)
+    if @user.contacts.include?(contact)
+      redirect_to contact_path(contact)
+    else
+      @user.contacts << contact
+      @user.save
+      redirect_to contact_path(contact)
+    end
   end
 
   def show

@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    binding.pry
     message = Message.create(message_params)
     @user.messages << message
     @user.save
