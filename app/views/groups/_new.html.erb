@@ -1,0 +1,6 @@
+<%= form_for group.group_messages.build do |f| %>
+  <%= f.hidden_field 'group_id' %>
+  <%= f.label 'content' %><br>
+  <%= f.text_field 'content' %><br>
+  <%= f.submit %>
+<% end %>

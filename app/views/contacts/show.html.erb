@@ -1,1 +1,5 @@
-<%= render 'show', conversation: @conversation %>
+<ul>
+  <% @conversation.each do |m| %>
+    <li><%= m.content %></li>
+  <% end %>
+</ul>

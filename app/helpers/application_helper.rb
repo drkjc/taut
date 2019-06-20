@@ -4,4 +4,14 @@ module ApplicationHelper
     self.controller_name.upcase
   end
 
+  def new_message_form
+    if params["controller"] == "groups"
+      render 'groups/new', group: @group
+    elsif params["controller"] == "contacts"
+      render 'contacts/new', contact: @contact
+    else
+      render file: 'users/show'
+    end
+  end
+
 end

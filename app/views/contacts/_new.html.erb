@@ -1,0 +1,6 @@
+<%= form_for contact.messages.build do |f| %>
+  <%= f.hidden_field 'contact_id' %>
+  <%= f.label 'content' %><br>
+  <%= f.text_field 'content' %><br>
+  <%= f.submit %>
+<% end %>

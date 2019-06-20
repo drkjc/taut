@@ -1,1 +1,3 @@
-<%= render 'show', group: @group %>
+<% @group.group_messages.each do |gm| %>
+  <%= gm.content %><br>
+<% end %>
