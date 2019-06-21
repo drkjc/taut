@@ -4,3 +4,9 @@
   <%= f.text_field 'content' %><br>
   <%= f.submit %>
 <% end %>
+
+form_for([@group, @group_message]) do |f|
+
+resources :groups do
+  resources :group_messages
+end

@@ -1,24 +1,20 @@
 class UsersController < ApplicationController
 
-  def index
-    @user = User.new
-    render template: "login"
-  end
-
   def new
     @user = User.new
-    render template: "login"
+    render layout: 'login'
   end
 
   def create
-
-    @user = User.find_or_create_by(user_params)
-
-    if @user
-      session[:id] = @user.id
-      redirect_to '/home'
+    binding.pry
+    @user = User.new(user_params)
+    binding.pry
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome to Taut"
+      redirect_to user_path(@user)
     else
-      redirect_to :index
+      render 'new'
     end
   end
 
@@ -29,7 +25,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email_address, :password_digest)
+    params.require(:user).permit(:username, :email_address, :password, :password_confirmation)
   end
 
 end

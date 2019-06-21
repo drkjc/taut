@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
 
   def create
     @user.groups << Group.create(group_params)
-    redirect_to user_path
+    redirect_to group_path(@user.groups.last)
   end
 
   def edit

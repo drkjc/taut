@@ -11,44 +11,52 @@
 
   <body>
 
-        <div id="wrapper">
+    <div id="flash_message">
+      <% if flash %>
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= message %></div>
+        <% end %>
+      <% end %>
+    </div>
 
-          <div id="top-nav">
-            <span>Hi, <%= @user.username %></span>
-          </div>
 
-          <div id="scrollbox">
+    <div id="wrapper">
 
-            <span>Groups:</span><br>
+      <div id="top-nav">
+        <%= link_to 'logout', logout_path, method: :delete  %>
+      </div>
 
-            <%= render 'groups/group', user: @user %>
+      <div id="scrollbox">
+        <span>Groups:</span><br>
 
-            <span>
-              <%= render 'users/groups', user: @user  %>
-            </span><br>
+        <%= render 'groups/group', user: @user %>
 
-            <span>Contacts:</span><br>
+        <span>
+          <%= render 'users/groups', user: @user  %>
+        </span><br>
 
-            <%= render 'contacts/contact', user: @user %>
+        <span>Contacts:</span><br>
 
-            <span>
-              <%= render 'users/contacts', user: @user %>
-            </span>
-          </div>
+        <%= render 'contacts/contact', user: @user %>
 
-          <div id="show_box">
-            <%= yield %>
-          </div>
+        <span>
+          <%= render 'users/contacts', user: @user %>
+        </span>
+      </div>
 
-          <div class="bottom-nav" id="bottom-left">
-            Bottom left
-          </div>
+      <div id="show_box">
+        <%= yield %>
+      </div>
 
-          <div class="bottom-nav" id="bottom-right">
-            <%= new_message_form %>
-          </div>
+      <div class="bottom-nav" id="bottom-left">
+        Bottom left
+      </div>
 
-        </div>
+      <div class="bottom-nav" id="bottom-right">
+        <%= new_message_form %>
+      </div>
+
+    </div>
 
   </body>
 </html>

@@ -7,10 +7,15 @@ Rails.application.routes.draw do
 
   resources :contacts, except: [:index]
 
+  get '/signup', to: 'users#new'
+  resources :users
 
-  resources :users, except: [:index, :new, :show]
-  get '/home', to: 'users#show', as: 'inbox'
-  get '/', to: 'users#index', as: 'login'
-  get '/signup', to: 'users#new', as: 'signup'
+
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
