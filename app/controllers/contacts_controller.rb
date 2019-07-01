@@ -6,13 +6,13 @@ class ContactsController < ApplicationController
   end
 
   def create
-    contact = Contact.find_or_create_by(contact_params)
-    if @user.contacts.include?(contact)
-      redirect_to contact_path(contact)
+    contact = Contact.find_by(username: params[:contact][:username])
+    if !contact
+      @user.contacts << Contact.create(contact_params)
+      redirect_to contact_path(@user.contacts.last)
     else
-      @user.contacts << contact
-      @user.save
-      redirect_to contact_path(contact)
+      flash[:notice] = "You're already connected to #{contact.username}"
+      redirect_to @user
     end
   end
 
@@ -32,7 +32,7 @@ class ContactsController < ApplicationController
   private
 
   def find_user
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
   end
 
   def contact_params

@@ -10,8 +10,14 @@ class GroupsController < ApplicationController
   end
 
   def create
-    @user.groups << Group.create(group_params)
-    redirect_to group_path(@user.groups.last)
+    group = Group.find_by(name: params[:group][:name])
+    if !group
+      @user.groups << Group.create(group_params)
+      redirect_to group_path(@user.groups.last)
+    else
+      flash[:notice] = "Group already exists"
+      redirect_to @user
+    end
   end
 
   def edit
@@ -27,7 +33,7 @@ class GroupsController < ApplicationController
   end
 
   def find_user
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
   end
 
 end
