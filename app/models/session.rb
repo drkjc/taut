@@ -1,10 +1,4 @@
-class User < ApplicationRecord
-  has_many :messages
-  has_many :group_messages
-  has_many :contacts, through: :messages
-  has_many :users_groups
-  has_many :groups, through: :users_groups
-
+class Session < ApplicationRecord
   validates :username, presence: true, length: { maximum: 50 }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -13,5 +7,16 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
+
+  # Logs in the given user
+  def log_in(user)
+    session[:user_id] = user.id
+  end
+
+  #Logs out the given user
+  def log_out
+    session.delete(:user_id)
+    @current_user = nil
+  end
 
 end

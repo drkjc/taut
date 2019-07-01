@@ -7,18 +7,20 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:session][:username])
-    binding.pry
     if user && user.authenticate(params[:session][:password])
       log_in user
       redirect_to user
+    elsif user && !user.authenticate(params[:session][:password])
+      flash[:notice] = 'Invalid password'
+      redirect_to root_path
     else
-      flash[:danger] = 'Invalid email/password combination'
+      flash[:notice] = "Can't find user. Create an account!"
       redirect_to new_user_path
     end
   end
 
   def destroy
     log_out
-    redirect_to '/login'
+    redirect_to root_path
   end
 end
