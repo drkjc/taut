@@ -6,15 +6,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.new(user_params)
-    binding.pry
     if @user.save
       log_in @user
       flash[:success] = "Welcome to Taut"
       redirect_to user_path(@user)
     else
-      render 'new'
+      redirect_to '/users/new'
     end
   end
 
