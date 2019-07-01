@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+  # sessions routes
+  root to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
+  # users routes
+  get '/signup', to: 'users#new'
+  resources :users
+
   resources :group_messages
 
   resources :messages
@@ -7,13 +17,6 @@ Rails.application.routes.draw do
 
   resources :contacts, except: [:index]
 
-  get '/signup', to: 'users#new'
-  resources :users
-
-
-  root to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
 
 
 
