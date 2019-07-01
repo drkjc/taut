@@ -1,6 +1,10 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
+<ul>
+  <% if flash[:notice] %>
+    <% flash[:notice].each do |n| %>
+      <li><%= n %></li>
+    <% end %>
+  <% end %>
+</ul>
 
 <h1>Signup!</h1>
 

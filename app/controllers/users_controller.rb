@@ -7,13 +7,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      log_in @user
-      flash[:success] = "Welcome to Taut"
-      redirect_to user_path(@user)
-    else
-      redirect_to '/users/new'
-    end
+    signup_user(@user)
   end
 
   def show
@@ -24,6 +18,17 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email_address, :password, :password_confirmation)
+  end
+
+  def signup_user(user)
+    if user.save
+      log_in user
+      flash[:success] = "Welcome to Taut"
+      redirect_to user_path(user)
+    else
+      flash[:notice] = user.errors.full_messages
+      redirect_to '/users/new'
+    end
   end
 
 end

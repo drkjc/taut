@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # users routes
   get '/signup', to: 'users#new'
-  resources :users, except: :index
+  resources :users, only: [:new, :create, :show]
 
   resources :group_messages
 
