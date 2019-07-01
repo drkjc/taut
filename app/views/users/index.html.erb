@@ -1,0 +1,6 @@
+<%= form_for([@user, @group]) do |f| %>
+  <%= fields_for @user.groups.build do |group_fields|  %>
+    <%= group_fields.text_field :name %>
+  <% end %>
+  <%= f.submit 'Join Group' %>
+<% end %>

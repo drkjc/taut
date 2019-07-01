@@ -34,7 +34,7 @@ class GroupMessagesController < ApplicationController
   end
 
   def find_user
-    @user = User.find(session[:id])
+    @user = User.find(session[:user_id])
   end
 
 end

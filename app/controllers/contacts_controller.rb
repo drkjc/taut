@@ -7,11 +7,11 @@ class ContactsController < ApplicationController
 
   def create
     contact = Contact.find_by(username: params[:contact][:username])
-    if !contact
-      @user.contacts << Contact.create(contact_params)
+    if contact
+      @user.contacts << contact
       redirect_to contact_path(@user.contacts.last)
     else
-      flash[:notice] = "You're already connected to #{contact.username}"
+      flash[:notice] = "That user doesn't have access to the group."
       redirect_to @user
     end
   end

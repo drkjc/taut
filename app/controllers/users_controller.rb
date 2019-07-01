@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:index, :show, :edit]
+
+  def index
+    @group = Group.new
+    render layout: 'new_group'
+  end
 
   def new
     @user = User.new
@@ -11,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
   end
 
   private
@@ -20,15 +25,20 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email_address, :password, :password_confirmation)
   end
 
-  def signup_user(user)
-    if user.save
-      log_in user
-      flash[:success] = "Welcome to Taut"
-      redirect_to user_path(user)
-    else
-      flash[:notice] = user.errors.full_messages
-      redirect_to '/users/new'
-    end
+  def find_user
+    @user ||= User.find(session[:user_id])
   end
+
+  # def signup_user(user)
+  #   if user.save
+  #     Contact.create(username: user.username)
+  #     log_in user
+  #     flash[:success] = "Welcome to Taut"
+  #     redirect_to users_path
+  #   else
+  #     flash[:errors] = user.errors.full_messages
+  #     redirect_to '/users/new'
+  #   end
+  # end
 
 end
