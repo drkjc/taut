@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
-  before_action :find_user, only: [:index, :show, :edit, :create]
+  before_action :logged_in?
+  before_action :find_user, only: [:index, :create]
+
 
   def index
   end
@@ -8,22 +10,21 @@ class MessagesController < ApplicationController
   end
 
   def create
-    binding.pry
-    contact = Contact.find(params[:contact_id])
-    message = Message.create(message_params)
-    @user.messages << message
-    @user.save
-    binding.pry
-    redirect_to user_contact_path(message.contact)
+    if params[:contact_id]
+      contact = Contact.find(params[:contact_id])
+      message = Message.new(message_params)
+      message.contact = contact
+      message.user = @user
+      message.save
+      redirect_to contact_path(message.contact)
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content, :contact_id)
-  end
-
-  def find_user
-    @user = User.find(session[:user_id])
+    params.require(:message).permit(:content)
   end
 end

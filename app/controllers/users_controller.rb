@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :find_user, only: [:index, :show, :edit]
+  before_action :logged_in?, only: [:index, :show]
+  before_action :find_user, only: [:index, :show]
 
   def index
     @group = Group.new
@@ -18,17 +19,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @contact = Contact.new
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:username, :email_address, :password, :password_confirmation)
-  end
-
-  def find_user
-    @user ||= User.find(session[:user_id])
+    params.require(:user).permit(:username, :email_address, :password, :password_confirmation, :contact_id)
   end
 
 end

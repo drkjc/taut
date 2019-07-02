@@ -1,4 +1,5 @@
 class GroupMessagesController < ApplicationController
+  before_action :logged_in?
   before_action :find_user, only: [:create]
 
   def index
@@ -31,10 +32,6 @@ class GroupMessagesController < ApplicationController
   def group_message_params
     params.require(:group_message).permit(:content,
       :group_id)
-  end
-
-  def find_user
-    @user = User.find(session[:user_id])
   end
 
 end

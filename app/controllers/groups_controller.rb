@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :logged_in?
   before_action :find_user, only: [:show, :edit, :create]
 
   def show
@@ -32,10 +33,6 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name)
-  end
-
-  def find_user
-    @user ||= User.find(session[:user_id])
   end
 
 end

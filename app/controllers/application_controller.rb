@@ -9,7 +9,13 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    !current_user.nil?
+    if current_user.nil?
+      redirect_to root_path
+    end
+  end
+
+  def find_user
+    @user ||= User.find(session[:user_id])
   end
 
 

@@ -1,6 +1,4 @@
-
-
-<%= form_for([@user, @contact]) do |f| %>
-  <%= f.collection_select(:id, Contact.all, :id, :username, include_blank: true) %>
-  <%= f.submit 'Message Contact' %>
+<%= form_tag(new_contact_path, method: "get") do %>
+  <%= collection_select(:contact, :id, Contact.all, :id, :username, include_blank: true) %>
+  <%= submit_tag 'direct message' %>
 <% end %>
