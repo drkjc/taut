@@ -1,12 +1,11 @@
 class ContactsController < ApplicationController
-  before_action :find_user, only: [:show, :create]
+  before_action :find_user, only: [:new, :show, :create]
 
   def new
-    @contact = Contact.new
   end
 
   def create
-    contact = Contact.find_by(username: params[:contact][:username])
+    contact = Contact.find_by(id: params[:contact][:id])
     if contact
       @user.contacts << contact
       redirect_to contact_path(@user.contacts.last)
@@ -18,7 +17,7 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-
+    @message = Message.new
     messages = []
 
     messages << sent = Message.where(user_id: @user.id, contact_id: params[:id])

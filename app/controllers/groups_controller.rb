@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
     group = Group.find_by(name: params[:group][:name])
     if group
       @user.groups << group
+      @user.save
       redirect_to group_path(@user.groups.last)
     else
       @user.groups << Group.create(group_params)

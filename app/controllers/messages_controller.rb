@@ -5,15 +5,15 @@ class MessagesController < ApplicationController
   end
 
   def new
-    @message = Message.new
   end
 
   def create
+    contact = Contact.find(params[:contact_id])
     message = Message.create(message_params)
     @user.messages << message
     @user.save
-
-    redirect_to contact_path(message.contact)
+    binding.pry
+    redirect_to user_contact_path(message.contact)
   end
 
   private

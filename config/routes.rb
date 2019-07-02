@@ -10,6 +10,17 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :show] do
     resources :groups
   end
+  resources :users, only: [:index, :new, :create, :show] do
+    resources :contacts
+  end
+
+
+  # contacts routes
+  resources :contacts, only: [:index, :new, :create, :show] do
+    resources :messages
+  end
+
+
 
 
 
