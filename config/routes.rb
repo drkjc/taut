@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     resources :contacts
   end
 
-
   # contacts routes
   resources :contacts, only: [:index, :new, :create, :show] do
     resources :messages
@@ -29,8 +28,6 @@ Rails.application.routes.draw do
   resources :messages
 
   resources :groups, except: [:index]
-
-  resources :contacts, except: [:index]
 
 
 

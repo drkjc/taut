@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @contact = Contact.new
   end
 
   def new
@@ -17,7 +18,7 @@ class GroupsController < ApplicationController
       redirect_to group_path(@user.groups.last)
     else
       @user.groups << Group.create(group_params)
-      redirect_to @user
+      redirect_to group_path(@user.groups.last)
     end
   end
 

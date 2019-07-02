@@ -8,6 +8,7 @@ class MessagesController < ApplicationController
   end
 
   def create
+    binding.pry
     contact = Contact.find(params[:contact_id])
     message = Message.create(message_params)
     @user.messages << message

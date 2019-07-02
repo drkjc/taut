@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    #method in users helper
     signup_user(@user)
   end
 
@@ -29,17 +30,5 @@ class UsersController < ApplicationController
   def find_user
     @user ||= User.find(session[:user_id])
   end
-
-  # def signup_user(user)
-  #   if user.save
-  #     Contact.create(username: user.username)
-  #     log_in user
-  #     flash[:success] = "Welcome to Taut"
-  #     redirect_to users_path
-  #   else
-  #     flash[:errors] = user.errors.full_messages
-  #     redirect_to '/users/new'
-  #   end
-  # end
 
 end
