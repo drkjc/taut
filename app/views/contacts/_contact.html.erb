@@ -1,4 +1,4 @@
 <%= form_tag(new_contact_path, method: "get") do %>
-  <%= collection_select(:contact, :id, Contact.all, :id, :username, include_blank: true) %>
+  <%= collection_select(:contact, :id, Contact.all, :id, :username, include_blank: true) %><br>
   <%= submit_tag 'direct message' %>
 <% end %>

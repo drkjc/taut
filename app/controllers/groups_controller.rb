@@ -1,6 +1,16 @@
 class GroupsController < ApplicationController
   before_action :logged_in?
-  before_action :find_user, only: [:show, :edit, :create]
+  before_action :find_user, only: [:index, :show, :edit, :create]
+
+  def index
+    @group = Group.find(params[:group][:id])
+    if @user.groups.include?(@group)
+      redirect_to group_path(@group)
+    else
+      @user.groups << @group
+      redirect_to group_path(@group)
+    end
+  end
 
   def show
     @group = Group.find(params[:id])
@@ -16,6 +26,10 @@ class GroupsController < ApplicationController
     if group
       @user.groups << group
       @user.save
+      redirect_to group_path(@user.groups.last)
+    elsif group_params[:name].blank?
+      binding.pry
+      flash[:alert] = "Group name can't be blank."
       redirect_to group_path(@user.groups.last)
     else
       @user.groups << Group.create(group_params)

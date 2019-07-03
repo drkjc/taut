@@ -1,6 +1,14 @@
+<% if flash[:alert] %>
+  <%= flash[:alert] %>
+<% end %>
+
+<%= form_tag(groups_path, method: "get") do %>
+  <%= collection_select(:group, :id, Group.all[1..-1], :id, :name, include_blank: true) %><br>
+  <%= submit_tag 'Join Group' %>
+<% end %><br>
+
 <%= form_for user.groups.build do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, placeholder: "create a group..." %>
   <%= f.hidden_field :user_id, value: user.id %>
   <%= f.submit 'New Group' %><br>
 <% end %><br>
