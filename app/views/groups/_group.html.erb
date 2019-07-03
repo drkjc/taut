@@ -7,8 +7,7 @@
   <%= submit_tag 'Join Group' %>
 <% end %><br>
 
-<%= form_for user.groups.build do |f| %>
+<%= form_for(@group, url: groups_path, html: {method: 'post'})  do |f| %>
   <%= f.text_field :name, placeholder: "create a group..." %>
-  <%= f.hidden_field :user_id, value: user.id %>
   <%= f.submit 'New Group' %><br>
 <% end %><br>

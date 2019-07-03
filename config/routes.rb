@@ -7,29 +7,23 @@ Rails.application.routes.draw do
 
   # users routes
   get '/signup', to: 'users#new'
-  resources :users, only: [:index, :new, :create, :show, :update] do
-    resources :groups
-  end
-  resources :users, only: [:index, :new, :create, :show] do
-  end
+  resources :users, only: [:index, :new, :create, :show, :update]
 
   # contacts routes
   resources :contacts, only: [:index, :new, :create, :show] do
     resources :messages
   end
 
-  #groups routes
-  resources :groups
-
-
-
-  resources :group_messages
-
+  #messages routes
   resources :messages
 
+  #groups routes
+  resources :groups do
+    resources :group_messages
+  end
 
-
-
+  #group messages routes
+  resources :group_messages
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

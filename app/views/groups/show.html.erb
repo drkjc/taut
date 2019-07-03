@@ -1,3 +1,5 @@
-<% @group.group_messages.each do |gm| %>
+<h1><%= @found_group.name %><h1>
+
+<% @found_group.group_messages.each do |gm| %>
   <%= gm.content %><br>
 <% end %>
