@@ -1,5 +1,9 @@
-<h1><%= @found_group.name %><h1>
+<h1><%= @found_group.name %></h1>
 
-<% @found_group.group_messages.each do |gm| %>
-  <%= gm.content %><br>
-<% end %>
+<ul>
+  <% unless @conversation.empty? %>
+    <% @conversation.each do |m| %>
+      <li><%= m.content %></li>
+    <% end %>
+  <% end %>
+</ul>

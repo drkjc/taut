@@ -1,12 +1,12 @@
 class GroupMessagesController < ApplicationController
   before_action :logged_in?
-  before_action :find_user, only: [:create]
+  before_action :find_user, only: [:index, :create, :show]
 
   def index
-    @user = User.find(session[:id])
   end
 
   def show
+    @group = Group.find(params[:id])
   end
 
   def new
@@ -14,11 +14,16 @@ class GroupMessagesController < ApplicationController
   end
 
   def create
-    group_message = GroupMessage.create(group_message_params)
-    @user.group_messages << group_message
-    @user.save
-
-    redirect_to group_path(group_message.group)
+    if params[:group_id]
+      group = Group.find(params[:group_id])
+      group_message = GroupMessage.new(group_message_params)
+      group_message.group = group
+      group_message.user = @user
+      group_message.save
+      redirect_to group_path(group_message.group)
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def edit

@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @group = Group.new
   end
 
   private

@@ -8,7 +8,6 @@ class ContactsController < ApplicationController
     if @user.contacts.include?(@contact)
       redirect_to contact_path(@contact)
     else
-      binding.pry
       @user.contacts << @contact
       redirect_to contact_path(@contact)
     end

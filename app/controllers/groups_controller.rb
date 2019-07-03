@@ -18,7 +18,6 @@ class GroupsController < ApplicationController
   end
 
   def new
-    #@group = Group.new
   end
 
   def create
@@ -35,6 +34,19 @@ class GroupsController < ApplicationController
       @user.groups << Group.create(group_params)
       redirect_to group_path(@user.groups.last)
     end
+  end
+
+  def show
+    @group = Group.new
+    @found_group = Group.find(params[:id])
+    @group_message = GroupMessage.new
+    messages = []
+
+    # messages << GroupMessage.where(user_id: @user.id, group_id: @found_group.id)
+    #
+    # messages << GroupMessage.where(user_id: @found_group.id, group_id: @user.id)
+    messages << GroupMessage.where(group_id: @found_group.id)
+    @conversation = messages.flatten.sort_by { |m| m.created_at}.uniq
   end
 
   def edit
