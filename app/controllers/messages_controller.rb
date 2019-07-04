@@ -17,6 +17,8 @@ class MessagesController < ApplicationController
     end
   end
 
+  ####################### END ROUTES #####################
+
   private
 
   def message_params

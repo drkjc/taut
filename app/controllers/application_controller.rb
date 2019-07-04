@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
-  include UsersHelper
-  include MessagesHelper
 
   def logged_in?
-    if current_user.nil?
+    if find_user.nil?
       redirect_to root_path
     end
   end

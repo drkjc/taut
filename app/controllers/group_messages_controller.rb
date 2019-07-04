@@ -32,11 +32,13 @@ class GroupMessagesController < ApplicationController
   def destroy
   end
 
+  ####################### END ROUTES #####################
+
   private
 
   def group_message_params
     params.require(:group_message).permit(:content,
-      :group_id)
+      :group_id, :user_id)
   end
 
 end
