@@ -6,9 +6,9 @@ module ApplicationHelper
 
   def new_message_form
     if params["controller"] == "groups"
-      render 'groups/new', group: @group
+      render 'groups/new_group_message', group: @group
     elsif params["controller"] == "contacts"
-      render 'contacts/new', contact: @contact
+      render 'contacts/new_message', contact: @contact
     else
       render file: 'users/show'
     end

@@ -2,7 +2,6 @@ class MessagesController < ApplicationController
   before_action :logged_in?
   before_action :find_user, only: [:index, :create]
 
-
   def index
   end
 
@@ -17,7 +16,7 @@ class MessagesController < ApplicationController
     end
   end
 
-  ####################### END ROUTES #####################
+
 
   private
 

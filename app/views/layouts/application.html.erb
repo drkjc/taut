@@ -33,18 +33,18 @@
       <div id="scrollbox">
         <span>Groups:</span><br>
 
-        <%= render 'groups/group', user: @user %>
+        <%= render 'groups/new_group', user: @user %>
 
         <span>
-          <%= render 'users/groups', user: @user  %>
+          <%= render 'users/show_groups', user: @user  %>
         </span><br>
 
         <span>Contacts:</span><br>
 
-        <%= render 'contacts/contact', user: @user %>
+        <%= render 'contacts/new_contact', user: @user %>
 
         <span>
-          <%= render 'users/contacts', user: @user %>
+          <%= render 'users/show_contacts', user: @user %>
         </span>
       </div>
 

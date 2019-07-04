@@ -1,6 +1,0 @@
-<ul>
-  <li><%= link_to @user.username, contact_path(@user) %></li>
-  <% get_contacts.each do |user| %>
-    <li><%= link_to user.username, contact_path(user) %></li>
-  <% end %>
-</ul>

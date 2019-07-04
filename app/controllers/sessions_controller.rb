@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    # method in sessions helper
     log_out
     redirect_to root_path
   end
