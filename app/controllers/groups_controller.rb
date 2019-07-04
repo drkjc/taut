@@ -4,12 +4,12 @@ class GroupsController < ApplicationController
   before_action :new_group, only: [:show]
 
   def index
-    group = Group.find(params[:group][:id])
-    #method below
-    join_group(group)
   end
 
   def new
+    group = Group.find(params[:group][:id])
+    #method below
+    join_group(group)
   end
 
   def create
@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
   def show
     @found_group = Group.find(params[:id])
     @group_message = GroupMessage.new(group_id: params[:id], user_id: @user.id )
-    
+
     #method below
     group_conversation(@found_group)
   end
@@ -59,11 +59,11 @@ class GroupsController < ApplicationController
   end
 
   def join_group(group)
-    if @user.groups.include?(@group)
-      redirect_to group_path(@group)
+    if @user.groups.include?(group)
+      redirect_to group_path(group)
     else
-      @user.groups << @group
-      redirect_to group_path(@group)
+      @user.groups << group
+      redirect_to group_path(group)
     end
   end
 

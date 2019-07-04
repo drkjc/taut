@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
-  include SessionsHelper
-
+  
   def logged_in?
     if find_user.nil?
       redirect_to root_path

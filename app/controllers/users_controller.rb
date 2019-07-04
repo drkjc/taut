@@ -18,8 +18,6 @@ class UsersController < ApplicationController
     signup_user(@user)
   end
 
-  def show
-  end
 
   ####################### END ROUTES #####################
 

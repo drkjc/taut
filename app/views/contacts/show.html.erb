@@ -1,8 +1,8 @@
 <h1><%= @contact.username %></h1>
 
 <ul>
-  <% unless @conversation.empty? %>
-    <% @conversation.each do |m| %>
+  <% unless @convo.empty? %>
+    <% @convo.each do |m| %>
       <li><%= m.content %></li>
     <% end %>
   <% end %>

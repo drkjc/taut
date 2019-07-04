@@ -10,8 +10,9 @@ module ApplicationHelper
     elsif params["controller"] == "contacts"
       render 'contacts/new_message', contact: @contact
     else
-      render file: 'users/show'
+      render file: 'groups/show'
     end
   end
+
 
 end

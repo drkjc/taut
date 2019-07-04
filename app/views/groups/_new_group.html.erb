@@ -2,7 +2,7 @@
   <%= flash[:alert] %>
 <% end %>
 
-<%= form_tag(groups_path, method: "get") do %>
+<%= form_tag(new_group_path, method: "get") do %>
   <%= collection_select(:group, :id, Group.all[1..-1], :id, :name, include_blank: true) %><br>
   <%= submit_tag 'Join Group' %>
 <% end %><br>
