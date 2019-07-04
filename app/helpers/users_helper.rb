@@ -12,4 +12,10 @@ module UsersHelper
     end
   end
 
+  def get_contacts
+    Message.where(contact_id: @user.id).map do |message|
+      message.user
+    end.uniq
+  end
+
 end

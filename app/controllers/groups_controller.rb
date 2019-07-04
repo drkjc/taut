@@ -42,9 +42,6 @@ class GroupsController < ApplicationController
     @group_message = GroupMessage.new
     messages = []
 
-    # messages << GroupMessage.where(user_id: @user.id, group_id: @found_group.id)
-    #
-    # messages << GroupMessage.where(user_id: @found_group.id, group_id: @user.id)
     messages << GroupMessage.where(group_id: @found_group.id)
     @conversation = messages.flatten.sort_by { |m| m.created_at}.uniq
   end

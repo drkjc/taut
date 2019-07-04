@@ -24,6 +24,10 @@
 
       <div id="top-nav">
         <%= link_to 'logout', logout_path, method: :delete  %>
+      </div><br>
+
+      <div id="username">
+        <%= @current_user.username %>
       </div>
 
       <div id="scrollbox">

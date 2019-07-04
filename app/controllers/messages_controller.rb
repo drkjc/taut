@@ -11,20 +11,15 @@ class MessagesController < ApplicationController
 
   def create
     if params[:contact_id]
-      contact = Contact.find(params[:contact_id])
-      message = Message.new(message_params)
-      message.contact = contact
-      message.user = @user
-      message.save
-      redirect_to contact_path(message.contact)
-    else
-      redirect_to user_path(@user)
+      contact = Contact.find_by(id: params[:contact_id])
+      message = Message.create(message_params)
+      redirect_to contact_path(contact)
     end
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :contact_id, :user_id)
   end
 end

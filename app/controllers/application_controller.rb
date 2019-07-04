@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   include UsersHelper
+  include MessagesHelper
 
   def current_user
     if session[:user_id]

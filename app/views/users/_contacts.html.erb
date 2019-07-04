@@ -1,5 +1,6 @@
-<% @user.contacts.uniq.each do |contact| %>
-  <% if !contact.id.nil? %>
-    <%= link_to contact.username, contact_path(contact) %><br>
+<ul>
+  <li><%= link_to @user.username, contact_path(@user) %></li>
+  <% get_contacts.each do |user| %>
+    <li><%= link_to user.username, contact_path(user) %></li>
   <% end %>
-<% end %>
+</ul>
