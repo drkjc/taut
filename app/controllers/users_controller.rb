@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @group = Group.new
-    render layout: 'new_group'
+    render layout: 'login'
   end
 
   def new
