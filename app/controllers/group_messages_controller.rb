@@ -15,14 +15,9 @@ class GroupMessagesController < ApplicationController
 
   def create
     if params[:group_id]
-      group = Group.find(params[:group_id])
-      group_message = GroupMessage.new(group_message_params)
-      group_message.group = group
-      group_message.user = @user
-      group_message.save
-      redirect_to group_path(group_message.group)
-    else
-      redirect_to user_path(@user)
+      group = Group.find_by(id: params[:group_id])
+      group_message = GroupMessage.create(group_message_params)
+      redirect_to group_path(group)
     end
   end
 

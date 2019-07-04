@@ -1,6 +1,6 @@
 <%= form_for([@found_group, @group_message]) do |f| %>
-  <%= fields_for @group.group_messages.build do |message_fields|  %>
-    <%= message_fields.text_field :content, placeholder: "Message #{@group.name}" %>
-  <% end %>
-  <%= f.submit 'Send' %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :group_id %>
+  <%= f.text_field :content, placeholder: "Message #{@found_group.name}" %>
+  <%= f.submit 'send' %>
 <% end %>
