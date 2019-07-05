@@ -45,15 +45,17 @@ class GroupsController < ApplicationController
   end
 
   def join_or_create_group(group)
-    if group
-      @user.groups << group unless @user.groups.include?(group)
-      @user.save
-      redirect_to group_path(@user.groups.last)
-    elsif group_params[:name].blank?
+    if group_params[:name].blank?
       flash[:alert] = "Group name can't be blank."
       redirect_to groups_path
+    elsif group && group.user_ids != @user.id
+      flash[:notice] = "That group name is already taken. Please pick another."
+      redirect_to group_path(@user.groups.first)
+    elsif @user.groups.include?(group)
+      redirect_to group_path(group)
     else
       @user.groups << Group.create(group_params)
+      @user.save
       redirect_to group_path(@user.groups.last)
     end
   end
@@ -63,6 +65,7 @@ class GroupsController < ApplicationController
       redirect_to group_path(group)
     else
       @user.groups << group
+      @user.save
       redirect_to group_path(group)
     end
   end
