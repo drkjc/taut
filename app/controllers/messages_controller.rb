@@ -16,6 +16,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def destroy
+    message = Message.find(params[:id])
+    message.delete
+    redirect_to contact_path(params[:contact_id])
+  end
 
 
   private

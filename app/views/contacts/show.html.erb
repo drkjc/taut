@@ -3,7 +3,9 @@
 <ul>
   <% unless @convo.empty? %>
     <% @convo.each do |m| %>
-      <li><%= m.content %></li>
+      <% if m.user_id == @user.id %>
+        <li><%= m.content %> | <%= button_to 'x', message_path(m), params: { 'contact_id' => @contact.id }, method: :delete,  data: {confirm: 'Confirm Delete'}  %> | <%= %></li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>

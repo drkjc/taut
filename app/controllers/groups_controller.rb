@@ -40,14 +40,19 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name)
   end
 
+  # gets conversation between users and contacts
   def group_conversation(found_group)
     @convo = GroupMessage.where(group_id: found_group.id).sort_by { |m| m.created_at}.uniq
   end
 
+  #lets users join or create a group if it doesn't already exist or they aren't already a part of it
   def join_or_create_group(group)
     if group_params[:name].blank?
       flash[:alert] = "Group name can't be blank."
       redirect_to groups_path
+    elsif group && group.user_ids != @user.id && @user.groups.empty?
+      @user.groups << group
+      redirect_to group_path(@user.groups.first)
     elsif group && group.user_ids != @user.id
       flash[:notice] = "That group name is already taken. Please pick another."
       redirect_to group_path(@user.groups.first)
@@ -60,6 +65,7 @@ class GroupsController < ApplicationController
     end
   end
 
+  #let's users join a group if they aren't already a part of it
   def join_group(group)
     if @user.groups.include?(group)
       redirect_to group_path(group)

@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(username: params[:session][:username])
-    # method below
+    # method in application_controller
     redirect_user(user)
   end
 
   def destroy
-    # method below
+    # method in application_controller
     log_out
     redirect_to root_path
   end
