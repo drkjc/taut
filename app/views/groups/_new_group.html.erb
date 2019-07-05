@@ -3,11 +3,11 @@
 <% end %>
 
 <%= form_tag(new_group_path, method: "get") do %>
-  <%= collection_select(:group, :id, Group.all[1..-1], :id, :name, include_blank: true) %><br>
+  <%= collection_select(:group, :id, all_groups, :id, :name, include_blank: true) %><br>
   <%= submit_tag 'Join Group' %>
 <% end %><br>
 
 <%= form_for(@group, url: groups_path, html: {method: 'post'})  do |f| %>
-  <%= f.text_field :name, placeholder: "create a group..." %>
+  <%= f.text_field :name, placeholder: "create a group..." %><br>
   <%= f.submit 'New Group' %><br>
 <% end %><br>
