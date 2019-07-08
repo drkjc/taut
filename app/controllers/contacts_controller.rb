@@ -15,7 +15,6 @@ class ContactsController < ApplicationController
   def show
     @contact = Contact.find(params[:id])
     @message = Message.new(contact_id: params[:id], user_id: @user.id)
-
     contact_conversation(@contact)
   end
 

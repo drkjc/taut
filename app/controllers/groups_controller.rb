@@ -21,7 +21,6 @@ class GroupsController < ApplicationController
   def show
     @found_group = Group.find(params[:id])
     @group_message = GroupMessage.new(group_id: params[:id], user_id: @user.id )
-
     #method below
     group_conversation(@found_group)
   end
