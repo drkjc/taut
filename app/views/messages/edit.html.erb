@@ -1,0 +1,6 @@
+<%= form_for ([get_contact, get_message]) do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :contact_id %>
+  <%= f.text_field :content %>
+  <%= f.submit 'Send' %>
+<% end %>

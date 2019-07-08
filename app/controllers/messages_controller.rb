@@ -17,7 +17,21 @@ class MessagesController < ApplicationController
   end
 
   def edit
+    render layout: 'login'
+    @message = Message.find(params[:id])
+    @contact = Contact.find(params[:contact_id])
+  end
 
+  def update
+    contact = Contact.find(params[:contact_id])
+    message = Message.find(params[:id])
+    if !params[:message][:content].empty?
+      message.update(content: params[:message][:content])
+      redirect_to contact_path(contact)
+    else
+      flash[:alert] = "Form can't be blank"
+      redirect_to edit_contact_message_path(contact, message)
+    end
   end
 
   def destroy
