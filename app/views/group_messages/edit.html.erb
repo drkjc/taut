@@ -2,9 +2,8 @@
   <%= flash[:alert] %>
 <% end %>
 
-<%= form_for ([get_contact, get_message]) do |f| %>
+<%= form_for ([get_group, get_group_message]) do |f| %>
   <%= f.hidden_field :user_id %>
-  <%= f.hidden_field :contact_id %>
   <%= f.text_field :content %>
   <%= f.submit 'edit' %>
 <% end %>

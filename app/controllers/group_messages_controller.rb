@@ -22,9 +22,28 @@ class GroupMessagesController < ApplicationController
   end
 
   def edit
+    render layout: 'login'
+    @group_message = GroupMessage.find(params[:id])
+    @group = Group.find(params[:group_id])
+  end
+
+  def update
+    group = Group.find(params[:group_id])
+    group_message = GroupMessage.find(params[:id])
+    if !params[:group_message][:content].empty?
+      group_message.update(content: params[:group_message][:content])
+      redirect_to group_path(group)
+    else
+      flash[:alert] = "Form can't be blank"
+      redirect_to edit_group_group_message_path(group, group_message)
+    end
   end
 
   def destroy
+    group = Group.find(params[:group_id])
+    group_message = GroupMessage.find(params[:id])
+    group_message.delete
+    redirect_to group_path(group)
   end
 
   ####################### END ROUTES #####################

@@ -3,7 +3,9 @@
 <ul>
   <% unless @convo.empty? %>
     <% @convo.each do |m| %>
-      <li><%= m.content %></li>
+      <% if m.user_id = @user.id %>
+        <li><%= m.content %> | <%= button_to 'x', group_group_message_path(@found_group, m), params: { 'group_id' => @found_group.id}, method: :delete, data: {confirm: 'Confirm Delete'} %> | <%= button_to 'o', edit_group_group_message_path(@found_group, m), method: :get, data: {confirm: 'Edit Message?'} %></li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
