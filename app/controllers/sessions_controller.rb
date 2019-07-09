@@ -19,6 +19,8 @@ class SessionsController < ApplicationController
 
   ####################### END ROUTES #####################
 
+  private
+
   def auth
     request.env['omniauth.auth']
   end
