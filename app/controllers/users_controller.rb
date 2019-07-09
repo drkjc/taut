@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    #method below
+    #method in application_controller
     signup_user(@user)
   end
 
@@ -27,16 +27,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username, :email_address, :password, :password_confirmation)
   end
 
-  def signup_user(user)
-    if user.save
-      Contact.create(username: user.username)
-      log_in user
-      flash[:success] = "Welcome to Taut"
-      redirect_to users_path
-    else
-      flash[:errors] = user.errors.full_messages
-      redirect_to '/users/new'
-    end
-  end
 
 end

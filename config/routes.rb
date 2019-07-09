@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # sessions routes
   root to: 'sessions#new'
   post '/login', to: 'sessions#create'
+  get '/auth/facebook/callback' => 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
   # users routes

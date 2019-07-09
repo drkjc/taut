@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:session][:username])
-    # method in application_controller
-    redirect_user(user)
+    #method in application controller
+    log_in_user_with_omniauth
   end
+
 
   def destroy
     # method in application_controller
@@ -18,5 +18,9 @@ class SessionsController < ApplicationController
   end
 
   ####################### END ROUTES #####################
+
+  def auth
+    request.env['omniauth.auth']
+  end
 
 end
