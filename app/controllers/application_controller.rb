@@ -37,7 +37,6 @@ class ApplicationController < ActionController::Base
 
   # Signs up user and redirect to users path
   def signup_user(user)
-    binding.pry
     if user.save
       Contact.create(username: user.username)
       log_in user

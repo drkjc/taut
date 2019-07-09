@@ -29,6 +29,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
+    @user.groups.delete(params[:id])
+    redirect_to group_path(@user.groups.first)
   end
 
   ####################### END ROUTES #####################
