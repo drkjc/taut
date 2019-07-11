@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   # contacts routes
-  resources :contacts, only: [:index, :new, :create, :show] do
+  resources :contacts, only: [:index, :new, :create, :show, :destroy] do
     resources :messages
   end
 

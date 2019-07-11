@@ -1,7 +1,9 @@
-<% @user.groups.each do |group| %>
-  <% if group == @user.groups.first && !group.id.nil? %>
-    <%= link_to group.name, group_path(group) %> <br>
-  <% else !group.id.nil? %>
-    <%= link_to group.name, group_path(group) %><%= button_to 'x', group_path(group), method: :delete, data: {confirm: 'Remove Group?'} %>
+<ul>
+  <% @user.groups.each do |group| %>
+    <% if group == @user.groups.first && !group.id.nil? %>
+      <li><%= link_to group.name, group_path(group) %></li>
+    <% else !group.id.nil? %>
+      <li><%= link_to group.name, group_path(group) %><%= button_to 'x', group_path(group), method: :delete, data: {confirm: 'Remove Group?'} %></li>
+    <% end %>
   <% end %>
-<% end %>
+</ul>

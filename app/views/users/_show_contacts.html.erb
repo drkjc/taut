@@ -1,5 +1,11 @@
 <ul>
-  <% show_contacts.each do |user| %>
-    <li><%= link_to user.username, contact_path(user) %></li>
+  <% @user.contacts.uniq.each do |contact| %>
+    <% unless contact.nil? %>
+      <% if contact.id == @user.id %>
+        <li><%= link_to contact.username, contact_path(contact) %></li>
+      <% else %>
+        <li><%= link_to contact.username, contact_path(contact) %><%= button_to 'x', contact_path(contact), method: :delete, data: {confirm: 'Remove Contact?'} %></li>
+      <% end %>
+    <% end %>
   <% end %>
 </ul>

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  include UsersHelper
   # Logs in the given user
   def log_in(user)
     session[:user_id] = user.id
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       user.save
       Contact.find_or_create_by(username: user.username)
       log_in(user)
-      if user.groups
+      if user.groups.first
         redirect_to group_path(user.groups.first)
       else
         redirect_to users_path
