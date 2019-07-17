@@ -9,9 +9,6 @@ class MessagesController < ApplicationController
   end
 
   def create
-    #user = kelley (1)
-    #contact = derek (2)
-    #user = derek (2)
     if params[:contact_id]
       contact = Contact.find_by(id: params[:contact_id])
       message1 = Message.create(message_params)
