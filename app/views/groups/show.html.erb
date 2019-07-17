@@ -1,21 +1,21 @@
 <h1><%= @found_group.name %></h1>
 
-<ul>
+<ul class="convo">
   <% unless @convo.empty? %>
     <% @convo.each do |m| %>
       <% if m.user_id == @user.id %>
         <li class="message">
           <%= @user.username %>
-          <%= m.created_at.strftime("%l:%M") %><br>
+          <%= m.created_at.strftime("%l:%M") %><br><br>
           <%= m.content %>
           <%= button_to 'x', group_group_message_path(@found_group, m), params: { 'group_id' => @found_group.id}, method: :delete, data: {confirm: 'Confirm Delete'} %>
           <%= button_to 'edit', edit_group_group_message_path(@found_group, m), method: :get, data: {confirm: 'Edit Message?'} %>
-        </li>
+        </li><br>
       <% else %>
         <li class="message">
           <%= m.user.username %>
-          <%= m.created_at.strftime("%l:%M") %><br>
-          <%= m.content %></li>
+          <%= m.created_at.strftime("%l:%M") %><br><br>
+          <%= m.content %></li><br>
       <% end %>
     <% end %>
   <% end %>

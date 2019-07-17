@@ -1,13 +1,13 @@
 <h1><%= @contact.username %></h1>
 
 
-<ul>
+<ul class="convo">
   <% unless @convo.empty? %>
     <% @convo.each do |m| %>
       <% if m.user_id == @user.id %>
         <li class="message">
           <%= @user.username %>
-          <%= m.created_at.strftime("%l:%M") %><br>
+          <%= m.created_at.strftime("%l:%M") %><br><br>
           <%= m.content %>
           <%= button_to 'x', contact_message_path(@contact, m), params: { 'contact_id' => @contact.id }, method: :delete,  data: {confirm: 'Confirm Delete'}  %>
           <%= button_to 'edit', edit_contact_message_path(@contact, m), method: :get,  data: {confirm: 'Edit Message?'} %>
@@ -15,7 +15,7 @@
       <% else %>
         <li class="message">
           <%= m.user.username %>
-          <%= m.created_at.strftime("%l:%M") %><br>
+          <%= m.created_at.strftime("%l:%M") %><br><br>
           <%= m.content %></li><br>
       <% end %>
     <% end %>
