@@ -5,16 +5,19 @@
     <% @convo.each do |m| %>
       <% if m.user_id == @user.id %>
         <li class="message">
-          <%= @user.username %>
-          <%= m.created_at.strftime("%l:%M") %><br><br>
+          <span class="name"><%= @user.username %></span>
+          <span class="time"><%= m.created_at.strftime("%l:%M") %></span>
+          <div class="messagebutton">
+            <%= button_to 'x', group_group_message_path(@found_group, m), params: { 'group_id' => @found_group.id}, method: :delete, data: {confirm: 'Confirm Delete'}, form_class: "button-overlap" %>
+            <%= button_to '>', edit_group_group_message_path(@found_group, m), method: :get, data: {confirm: 'Edit Message?'}, form_class: "button-overlap" %>
+          </div>
+          <br>
           <%= m.content %>
-          <%= button_to 'x', group_group_message_path(@found_group, m), params: { 'group_id' => @found_group.id}, method: :delete, data: {confirm: 'Confirm Delete'} %>
-          <%= button_to 'edit', edit_group_group_message_path(@found_group, m), method: :get, data: {confirm: 'Edit Message?'} %>
         </li><br>
       <% else %>
         <li class="message">
-          <%= m.user.username %>
-          <%= m.created_at.strftime("%l:%M") %><br><br>
+          <span class="name"><%= m.user.username %></span>
+          <span class="time"><%= m.created_at.strftime("%l:%M") %></span><br><br>
           <%= m.content %></li><br>
       <% end %>
     <% end %>

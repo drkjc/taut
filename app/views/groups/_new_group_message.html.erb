@@ -2,5 +2,5 @@
   <%= f.hidden_field :user_id %>
   <%= f.hidden_field :group_id %>
   <%= f.text_field :content, placeholder: "Message #{@found_group.name}" %>
-  <%= f.submit 'send' %>
+  <%= f.submit "", :style => "display: none;" %>
 <% end %>
