@@ -34,8 +34,8 @@ class ContactsController < ApplicationController
 
   def contact_conversation(contact)
     messages = []
-    messages << Message.where(user_id: @user.id, contact_id: @contact.id)
-    messages << Message.where(user_id: @contact.id, contact_id: @user.id)
+    messages << Message.sent_messages(@user, contact)
+    messages << Message.received_messages(contact, @user)
     @convo = messages.flatten.sort_by { |m| m.created_at}.uniq { |m| m.content }.drop(1)
     @convo
   end

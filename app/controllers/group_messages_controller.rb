@@ -51,8 +51,7 @@ class GroupMessagesController < ApplicationController
   private
 
   def group_message_params
-    params.require(:group_message).permit(:content,
-      :group_id, :user_id)
+    params.require(:group_message).permit(:content, :group_id, :user_id)
   end
 
 end

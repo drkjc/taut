@@ -38,7 +38,6 @@ class MessagesController < ApplicationController
     contact = Contact.find(params[:contact_id])
     message1 = Message.find(params[:id])
     message2 = Message.find_by(content: message1.content, user_id: params[:contact_id])
-    binding.pry
     if !params[:message][:content].empty?
       message1.update(content: params[:message][:content])
       message2.update(content: params[:message][:content])
