@@ -36,19 +36,22 @@
 
 
       <div id="scrollbox">
-        <span>Groups:</span><br>
 
         <div id="join_group_form">
-        <%= render 'groups/new_group', user: @user %>
+          <span>Groups</span>
+          <br>
+          <br>
+          <%= render 'groups/new_group', user: @user %>
         </div>
 
         <div id="new_group_form">
           <%= render 'users/show_groups', user: @user  %>
         </div><br>
 
-        <span>Contacts:</span><br>
-
         <div id="new_contact_form">
+          <span>Contacts</span>
+          <br>
+          <br>
           <%= render 'contacts/new_contact', user: @user %>
         </div>
 

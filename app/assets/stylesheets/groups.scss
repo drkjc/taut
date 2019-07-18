@@ -6,8 +6,20 @@
 #new_group_form,
 #new_contact_form,
 #show_contacts_list {
-  padding: 5px;
+  padding: 15px;
   margin-left: 10px;
+}
+
+#new_group input[type=text] {
+  width: 160px;
+  padding: 4px;
+}
+
+#new_group input[type=text]:focus {
+  border: 1px solid rgb(132, 86, 60);
+  background-color: #f2f0ee;
+  width: 160px;
+  padding: 4px;
 }
 
 #scrollbox span {
@@ -21,7 +33,6 @@
 
 #new_group_form a, #show_contacts_list a {
   display: flex;
-  text-decoration: none;
   color: black;
   padding: 5px;
   font-size: 1.25rem;
@@ -29,6 +40,45 @@
 }
 
 #new_group_form a:hover,
-#show_contacts_list a:hover {
+#new_group_form a:active,
+#new_group_form a:focus,
+#show_contacts_list a:hover,
+#show_contacts_list a:active,
+#show_contacts_list a:focus {
   color: rgb(205, 152, 101);
+  text-decoration: underline overline black;
+}
+
+#join_group_form select,
+#new_contact_form select {
+  width: 160px;
+  padding: 2.5px;
+  cursor: pointer;
+}
+
+#join_group_form input[type=submit],
+#new_contact_form input[type=submit] {
+  width: 160px;
+  padding: 4px;
+  background-color: lightgray;
+  border-radius: 5px;
+  width: 100px;
+}
+
+#join_group_form input[type=submit]:hover,
+#new_contact_form input[type=submit]:hover {
+  color: white;
+  background-color: black;
+}
+
+#new_group_form input[type=submit],
+#show_contacts_list input[type=submit] {
+  background-color: white;
+  color: red;
+}
+
+#new_group_form input[type=submit]:hover,
+#show_contacts_list input[type=submit]:hover {
+  background-color: red;
+  color: white;
 }

@@ -5,7 +5,7 @@
 <div class="new_group">
   <%= form_tag(new_group_path, method: "get") do %>
     <%= collection_select(:group, :id, all_groups, :id, :name, include_blank: true) %><br>
-    <%= submit_tag 'Join Group' %>
+    <%= submit_tag 'join group' %>
   <% end %>
 </div><br>
 

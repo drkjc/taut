@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+body {
+  font-family: Helvetica;
+}
+
 
  #wrapper {
    width: 100%;
@@ -29,6 +33,7 @@
    height: 80px;
    width: 100%;
    border-bottom: 2px solid black;
+   z-index: 1;
  }
 
  #top-nav img {
