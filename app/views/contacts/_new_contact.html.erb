@@ -1,3 +1,7 @@
+<% if flash[:contact_alert] %>
+  <%= flash[:contact_alert] %>
+<% end %>
+
 <%= form_tag(new_contact_path, method: "get") do %>
   <%= collection_select(:contact, :id, all_contacts, :id, :username, include_blank: true) %><br>
   <%= submit_tag 'direct message' %>

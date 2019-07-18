@@ -7,7 +7,7 @@
       <% if m.user_id == @user.id %>
         <li class="message">
           <span class="name"><%= @user.username %></span>
-          <span class="time"><%= m.created_at.strftime("%l:%M") %></span>
+          <span class="time"><%= m.created_at.strftime("%l:%M %P") %></span>
           <div class="messagebutton">
             <%= button_to 'x', contact_message_path(@contact, m), params: { 'contact_id' => @contact.id }, method: :delete,  data: {confirm: 'Confirm Delete'}, form_class: "button-overlap"  %>
             <%= button_to '>', edit_contact_message_path(@contact, m), method: :get,  data: {confirm: 'Edit Message?'}, form_class: "button-overlap" %>
@@ -18,7 +18,7 @@
       <% else %>
         <li class="message">
           <span class="name"><%= m.user.username %></span>
-          <span class="time"><%= m.created_at.strftime("%l:%M") %></span><br><br>
+          <span class="time"><%= m.created_at.strftime("%l:%M %P") %></span><br><br>
           <%= m.content %></li><br>
       <% end %>
     <% end %>

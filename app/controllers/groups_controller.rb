@@ -4,12 +4,22 @@ class GroupsController < ApplicationController
   before_action :new_group, only: [:show]
 
   def index
+    if params[:group].nil?
+      redirect_to group_path(@user.groups.first)
+    else
+      redirect_to new_group_path
+    end
   end
 
   def new
-    group = Group.find(params[:group][:id])
-    #method below
-    join_group(group)
+    if params[:group][:id].empty?
+      flash[:alert] = "Please select a group to join."
+      redirect_to group_path(@user.groups.first)
+    else
+      group = Group.find(params[:group][:id])
+      #method below
+      join_group(group)
+    end
   end
 
   def create

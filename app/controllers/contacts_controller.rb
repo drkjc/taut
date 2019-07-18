@@ -5,8 +5,13 @@ class ContactsController < ApplicationController
 
 
   def new
-    @contact = Contact.find(params[:contact][:id])
-    new_contact(@contact)
+    if params[:contact][:id].empty?
+      flash[:contact_alert] = "Please select a contact."
+      redirect_to group_path(@user.groups.first)
+    else
+      @contact = Contact.find(params[:contact][:id])
+      new_contact(@contact)
+    end
   end
 
   def create
