@@ -14,3 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+window.onload=function () {
+     var objDiv = document.getElementByClass("convo");
+     objDiv.scrollTop = objDiv.scrollHeight;
+}

@@ -7,6 +7,7 @@ h1 {
   padding-left: 4rem;
   margin: 0 2rem;
   width: 100%;
+  top: 81px
 }
 
 .name {
@@ -30,4 +31,8 @@ h1 {
 
 #message_content, #group_message_content {
   width: 70%;
+  height: 3rem;
+  border: 1px solid gray;
+  font-size: 1.25rem;
+  padding: 10px;
 }

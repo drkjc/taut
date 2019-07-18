@@ -2,12 +2,16 @@
   <%= flash[:alert] %>
 <% end %>
 
-<%= form_tag(new_group_path, method: "get") do %>
-  <%= collection_select(:group, :id, all_groups, :id, :name, include_blank: true) %><br>
-  <%= submit_tag 'Join Group' %>
-<% end %><br>
+<div class="new_group">
+  <%= form_tag(new_group_path, method: "get") do %>
+    <%= collection_select(:group, :id, all_groups, :id, :name, include_blank: true) %><br>
+    <%= submit_tag 'Join Group' %>
+  <% end %>
+</div><br>
 
-<%= form_for(@group, url: groups_path, html: {method: 'post'})  do |f| %>
-  <%= f.text_field :name, placeholder: "create a group..." %><br>
-  <%= f.submit 'new group' %><br>
-<% end %><br>
+<div class="new_group">
+  <%= form_for(@group, url: groups_path, html: {method: 'post'})  do |f| %>
+    <%= f.text_field :name, placeholder: "create a group..." %><br>
+    <%= f.submit 'new group' %><br>
+  <% end %>
+</div><br>

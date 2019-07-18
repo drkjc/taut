@@ -1,6 +1,6 @@
 <h1><%= @found_group.name %></h1>
 
-<ul class="convo">
+<ul class="convo" onload="scrollToBottom()">
   <% unless @convo.empty? %>
     <% @convo.each do |m| %>
       <% if m.user_id == @user.id %>
