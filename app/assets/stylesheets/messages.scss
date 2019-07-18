@@ -1,13 +1,14 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-h1 {
+#contact_name_h1, #group_name_h1 {
   position: fixed;
   background-color: white;
-  padding-left: 4rem;
   margin: 0 2rem;
   width: 100%;
-  top: 81px
+  top: 80px;
+  border-top: 2px solid black;
+  border-bottom: 1px solid lightgray;
 }
 
 .name {

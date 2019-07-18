@@ -19,13 +19,37 @@
  }
 
  #top-nav {
+   display: flex;
+   justify-content: space-between;
+   align-items:center;
    position: fixed;
    left: 0;
    right: 0;
    top: 0;
    height: 80px;
    width: 100%;
-   border-bottom: 1px solid #70c170;
+   border-bottom: 2px solid black;
+ }
+
+ #top-nav img {
+   width: 150px;
+ }
+
+ #username {
+   font-weight: bold;
+   font-size: 2rem;
+ }
+
+ #logout_link a {
+   padding: 10px;
+   margin: 10px;
+   color: rgb(205, 152, 101);
+   text-decoration: none;
+   font-size: 1.25rem;
+  }
+
+ #logout_link a:hover {
+   color: rgb(132, 86, 60);
  }
 
 

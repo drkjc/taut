@@ -23,12 +23,17 @@
     <div id="wrapper">
 
       <div id="top-nav">
-        <%= link_to 'logout', logout_path, method: :delete  %>
+        <span>
+          <img src="/images/taut_logo.png" alt="taut">
+        </span>
+        <span id="username">
+          <%= @user.username %>
+        </span>
+        <span id="logout_link">
+          <%= link_to 'logout', logout_path, method: :delete  %>
+        </span>
       </div><br>
 
-      <div id="username">
-        <%= @user.username %>
-      </div>
 
       <div id="scrollbox">
         <span>Groups:</span><br>
