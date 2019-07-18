@@ -12,23 +12,26 @@
   <% end %>
 </ul>
 
-<h1>Signup!</h1>
+<div class="login">
+  <img src="/images/taut-logo-mint.png" alt="taut">
+  <h1>Signup!</h1>
 
-<%= form_for(@user) do |f| %>
-  <%= f.label :username %><br>
-  <%= f.text_field :username %><br>
+  <%= form_for(@user) do |f| %>
+    <%= f.label :username %><br>
+    <%= f.text_field :username %><br>
 
-  <%= f.label :email_address %><br>
-  <%= f.text_field :email_address %><br>
+    <%= f.label :email_address %><br>
+    <%= f.text_field :email_address %><br>
 
-  <%= f.label :password %><br>
-  <%= f.password_field :password %><br>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %><br>
 
-  <%= f.label :password_confirmation, "Confirmation" %><br>
-  <%= f.password_field :password_confirmation %><br>
+    <%= f.label :password_confirmation, "Confirmation" %><br>
+    <%= f.password_field :password_confirmation %><br>
 
-  <%= f.submit %>
+    <%= f.submit %>
 
-<% end %><br>
+  <% end %><br>
 
-<%= link_to 'Back to Login', root_path %>
+  <%= link_to 'Back to Login', root_path %>
+</div>

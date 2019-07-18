@@ -1,6 +1,11 @@
-<%= form_for([@user, @group]) do |f| %>
-  <%= fields_for @user.groups.build do |group_fields|  %>
-    <%= group_fields.text_field :name %>
-  <% end %>
-  <%= f.submit 'Join Group' %>
-<% end %>
+<div class="login">
+  <img src="/images/taut-logo-mint.png" alt="taut">
+  <div>
+    <%= form_for([@user, @group]) do |f| %>
+      <%= fields_for @user.groups.build do |group_fields|  %>
+        <%= group_fields.text_field :name %>
+      <% end %>
+      <%= f.submit 'Join Group' %>
+    <% end %>
+  </div>
+</div>

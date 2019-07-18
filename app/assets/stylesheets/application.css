@@ -17,6 +17,33 @@ body {
   font-family: Helvetica;
 }
 
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login input[type=submit] {
+  width: 120px;
+  padding: 3px;
+  background-color: #effbf5;
+  margin: 10px;
+}
+
+#login_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#login_form a, .login a {
+  text-decoration: none;
+  color: blue;
+}
+
+#login_form a:hover {
+  color: red;
+}
 
  #wrapper {
    width: 100%;

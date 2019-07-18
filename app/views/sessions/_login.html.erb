@@ -1,15 +1,20 @@
 <% provide(:title, 'Log in') %>
 
-<div id="login_form">
-  <%= form_for(:session, url: login_path) do |f| %>
+<div class="login">
+  <br>
+  <img src="/images/taut-logo-mint.png" alt="taut">
+  <br>
+  <div id="login_form">
+    <%= form_for(:session, url: login_path) do |f| %>
 
-    <%= f.label :username %><br>
-    <%= f.text_field :username %><br>
-    <%= f.label :password %><br>
-    <%= f.password_field :password %><br>
-    <%= f.submit 'Login' %>
-  <% end %>
+      <%= f.label :username %><br>
+      <%= f.text_field :username %><br>
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br>
+      <%= f.submit 'Login' %>
+    <% end %>
 
-  <p>New user? <%= link_to "Sign up now!", signup_path %></p><br>
-  <p><%= link_to('Log in with Facebook!', '/auth/facebook') %></p>
+    <p><%= link_to('Log in with Facebook!', '/auth/facebook') %></p>
+    <p>New user? <%= link_to "Sign up now!", signup_path %></p><br>
+  </div>
 </div>
