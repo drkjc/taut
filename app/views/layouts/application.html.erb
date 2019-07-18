@@ -24,7 +24,7 @@
 
       <div id="top-nav">
         <span>
-          <img src="/images/taut_logo.png" alt="taut">
+          <img src="/images/taut-logo-mint.png" alt="taut">
         </span>
         <span id="username">
           <%= @user.username %>
@@ -38,19 +38,23 @@
       <div id="scrollbox">
         <span>Groups:</span><br>
 
+        <div id="join_group_form">
         <%= render 'groups/new_group', user: @user %>
+        </div>
 
-        <span>
+        <div id="new_group_form">
           <%= render 'users/show_groups', user: @user  %>
-        </span><br>
+        </div><br>
 
         <span>Contacts:</span><br>
 
-        <%= render 'contacts/new_contact', user: @user %>
+        <div id="new_contact_form">
+          <%= render 'contacts/new_contact', user: @user %>
+        </div>
 
-        <span>
+        <div id="show_contacts_list">
           <%= render 'users/show_contacts', user: @user %>
-        </span>
+        </div>
       </div>
 
       <div id="show_box">
