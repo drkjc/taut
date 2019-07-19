@@ -37,6 +37,7 @@
   padding: 5px;
   font-size: 1.25rem;
   font-weight: bold;
+  text-decoration: none;
 }
 
 #new_group_form a:hover,
@@ -45,8 +46,7 @@
 #show_contacts_list a:hover,
 #show_contacts_list a:active,
 #show_contacts_list a:focus {
-  color: rgb(205, 152, 101);
-  text-decoration: underline overline black;
+
 }
 
 #join_group_form select,
@@ -73,17 +73,28 @@
 
 #new_group_form input[type=submit],
 #show_contacts_list input[type=submit] {
-  background-color: white;
+  background-color: #effbf5;
   color: red;
+  border: none;
+  cursor: pointer;
 }
 
 #new_group_form input[type=submit]:hover,
 #show_contacts_list input[type=submit]:hover {
-  background-color: red;
-  color: white;
+  // background-color: red;
+  // color: white;
+  font-size: 1.25rem;
+  font-weight: bold;
+  background-color: white;
+  cursor: pointer;
 }
 
 .show_list li {
   display: flex;
   align-items: center;
+}
+
+.show_list li:hover {
+  background: white;
+  cursor: pointer;
 }
