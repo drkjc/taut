@@ -5,7 +5,10 @@ class ContactsController < ApplicationController
 
 
   def new
-    if params[:contact][:id].empty?
+    if !params.include?("contact")
+      flash[:contact_alert] = "Please select a contact."
+      redirect_to group_path(@user.groups.first)
+    elsif params[:contact][:id].empty?
       flash[:contact_alert] = "Please select a contact."
       redirect_to group_path(@user.groups.first)
     else
@@ -19,8 +22,13 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find(params[:id])
-    @message = Message.new(contact_id: params[:id], user_id: @user.id)
-    contact_conversation(@contact)
+    if @contact
+      @message = Message.new(contact_id: params[:id], user_id: @user.id)
+      contact_conversation(@contact)
+    else
+      flash[:contact_alert] = "Couldn't find that contact"
+      redirect_to group_path(@user.groups.first)
+    end
   end
 
   def destroy

@@ -4,15 +4,13 @@ class GroupsController < ApplicationController
   before_action :new_group, only: [:show]
 
   def index
-    if params[:group].nil?
-      redirect_to group_path(@user.groups.first)
-    else
-      redirect_to new_group_path
-    end
   end
 
   def new
-    if params[:group][:id].empty?
+    if !params.include?("group")
+      flash[:alert] = "Please select a group to join."
+      redirect_to group_path(@user.groups.first)
+    elsif params[:group][:id].blank?
       flash[:alert] = "Please select a group to join."
       redirect_to group_path(@user.groups.first)
     else
@@ -30,9 +28,14 @@ class GroupsController < ApplicationController
 
   def show
     @found_group = Group.find(params[:id])
-    @group_message = GroupMessage.new(group_id: params[:id], user_id: @user.id )
-    #method below
-    group_conversation(@found_group)
+    if @found_group
+      @group_message = GroupMessage.new(group_id: params[:id], user_id: @user.id )
+      #method below
+      group_conversation(@found_group)
+    else
+      flash[:alert] = "Group not found"
+      redirect_to group_path(@user.groups.first)
+    end
   end
 
   def edit
@@ -60,7 +63,7 @@ class GroupsController < ApplicationController
   def join_or_create_group(group)
     if group_params[:name].blank?
       flash[:alert] = "Group name can't be blank."
-      redirect_to groups_path
+      redirect_to group_path(@user.groups.first)
     elsif group && group.user_ids != @user.id && @user.groups.empty?
       @user.groups << group
       redirect_to group_path(@user.groups.first)

@@ -6,6 +6,7 @@ class MessagesController < ApplicationController
   end
 
   def new
+    redirect_to group_path(@user.groups.first)
   end
 
   def create

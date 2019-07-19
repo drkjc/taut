@@ -1,4 +1,4 @@
-<ul>
+<ul class="show_list">
   <% @user.contacts.uniq.each do |contact| %>
     <% unless contact.nil? %>
       <% if contact.id == @user.id %>

@@ -1,4 +1,4 @@
-<ul>
+<ul class="show_list">
   <% @user.groups.each do |group| %>
     <% if group == @user.groups.first && !group.id.nil? %>
       <li><%= link_to group.name, group_path(group) %></li>
