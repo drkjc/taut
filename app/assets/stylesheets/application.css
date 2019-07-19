@@ -30,6 +30,11 @@ body {
   margin: 10px;
 }
 
+.login img {
+  width: 200px;
+  padding: 4rem;
+}
+
 #login_form {
   display: flex;
   flex-direction: column;
@@ -41,7 +46,7 @@ body {
   color: blue;
 }
 
-#login_form a:hover {
+#login_form a:hover, .login a:hover {
   color: red;
 }
 
