@@ -14,8 +14,10 @@ class GroupMessagesController < ApplicationController
   end
 
   def create
-    if params[:group_id]
-      group = Group.find_by(id: params[:group_id])
+    group = Group.find_by(id: params[:group_id])
+    if params[:group_message][:content].empty?
+      redirect_to group_path(group)
+    else params[:group_id]
       group_message = GroupMessage.create(group_message_params)
       redirect_to group_path(group)
     end

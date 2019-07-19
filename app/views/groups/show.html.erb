@@ -1,4 +1,7 @@
 <h1 id="group_name_h1"><%= @found_group.name %></h1>
+<% if flash[:message_alert] %>
+  <%= flash[:message_alert] %>
+<% end %>
 
 <ul class="convo" onload="scrollToBottom()">
   <% unless @convo.empty? %>
